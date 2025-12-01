@@ -1,0 +1,298 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-table-user
+      author: chanakan.beem
+      changes:
+        - createTable:
+            tableName: user
+            columns:
+              - column:
+                  name: email
+                  type: varchar(255)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: first_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: password
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: date_of_birth
+                  type: date
+                  constraints:
+                    nullable: false
+              - column:
+                  name: image_url
+                  type: varchar(255)
+                  constraints:
+                    nullable: true
+
+  - changeSet:
+      id: create-table-type
+      author: chanakan.beem
+      changes:
+        - createTable:
+            tableName: type
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: type_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: icon_class
+                  type: varchar(255)
+                  constraints:
+                    nullable: true
+
+  - changeSet:
+      id: create-table-product
+      author: chanakan.beem
+      changes:
+        - createTable:
+            tableName: product
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: product_name
+                  type: varchar
+                  constraints:
+                    nullable: false
+              - column:
+                  name: price
+                  type: double
+                  constraints:
+                    nullable: false
+              - column:
+                  name: detail
+                  type: varchar
+                  constraints:
+                    nullable: true
+              - column:
+                  name: product_qty
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: pic_product
+                  type: varchar
+                  constraints:
+                    nullable: true
+              - column:
+                  name: type_id
+                  type: int
+                  constraints:
+                    nullable: false
+                    foreignKeyName: product_type_id
+                    references: type(id)
+
+  - changeSet:
+      id: create-table-cart_item
+      author: chanakan.beem
+      changes:
+        - createTable:
+            tableName: cart_item
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: quantity
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: product_id
+                  type: int
+                  constraints:
+                    nullable: false
+                    foreignKeyName: cart_item_product_id
+                    references: product(id)
+
+  - changeSet:
+      id: create-table-address
+      author: chanakan.beem
+      changes:
+        - createTable:
+            tableName: address
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: house_number
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: province
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: building
+                  type: varchar(255)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: district
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: sub_district
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: create-table-reciept
+      author: chanakan.beem
+      changes:
+        - createTable:
+            tableName: reciept
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: date
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: total
+                  type: double
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+                    foreignKeyName: reciept_user_email
+                    references: user(email)
+              - column:
+                  name: address_id
+                  type: int
+                  constraints:
+                    nullable: false
+                    foreignKeyName: reciept_address_id
+                    references: address(id)
+
+  - changeSet:
+      id: create-table-reciept_detail
+      author: chanakan.beem
+      changes:
+        - createTable:
+            tableName: reciept_detail
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: amount
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: total_detail
+                  type: double
+                  constraints:
+                    nullable: false
+              - column:
+                  name: cart_item_id
+                  type: int
+                  constraints:
+                    nullable: false
+                    foreignKeyName: reciept_detail_cart_item_id
+                    references: cart_item(id)
+              - column:
+                  name: reciept_id
+                  type: int
+                  constraints:
+                    nullable: false
+                    foreignKeyName: reciept_detail_reciept_id
+                    references: reciept(id)
+
+  - changeSet:
+      id: create-table-saved_spec_group
+      author: chanakan.beem
+      changes:
+        - createTable:
+            tableName: saved_spec_group
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_email
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+                    foreignKeyName: saved_spec_group_user_email
+                    references: user(email)
+              - column:
+                  name: reciept_detail_id
+                  type: int
+                  constraints:
+                    nullable: false
+                    foreignKeyName: saved_spec_group_reciept_detail_id
+                    references: reciept_detail(id)
+
+  - changeSet:
+      id: add-column-brand-to-product
+      author: chanakan.beem
+      changes:
+        - addColumn:
+            tableName: product
+            columns:
+              - column:
+                  name: brand
+                  type: varchar(255)
+                  constraints:
+                    nullable: true
