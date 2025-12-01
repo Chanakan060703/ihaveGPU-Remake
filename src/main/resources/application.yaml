@@ -3,7 +3,7 @@ server:
   port: 8080
 spring:
   application:
-    name: ihaveGPU
+    name: ihavegpuremake
   profiles:
     active: "local"
   liquibase:
@@ -68,7 +68,7 @@ spring:
     activate:
       on-profile: local
   datasource:
-    url: jdbc:postgresql://127.0.0.1:5432/ihaveGPUremake?searchpath=public&createDatabaseIfNotExist=true&useUnicode=yes&characterEncoding=UTF-8&serverTimezone=Asia/Bangkok&prepareThreshold=0
+    url: jdbc:postgresql://127.0.0.1:5432/ihavegpuremake?searchpath=public&useUnicode=yes&characterEncoding=UTF-8&serverTimezone=Asia/Bangkok&prepareThreshold=0
     username: root
     password: 12345678
     hikari:
@@ -89,7 +89,7 @@ spring:
     activate:
       on-profile: dev
   datasource:
-    url: jdbc:postgresql://your-dev-database-host:5432/ihaveGPUremake?searchpath=public&createDatabaseIfNotExist=true&useUnicode=yes&characterEncoding=UTF-8&serverTimezone=Asia/Bangkok
+    url: jdbc:postgresql://your-dev-database-host:5432/ihavegpuremake?searchpath=public&createDatabaseIfNotExist=true&useUnicode=yes&characterEncoding=UTF-8&serverTimezone=Asia/Bangkok
     username: your-dev-username
     password: your-dev-password
     hikari:
@@ -102,7 +102,7 @@ spring:
     activate:
       on-profile: prod
   datasource:
-    url: jdbc:postgresql://your-prod-database-host:5432/ihaveGPUremake?searchpath=public&createDatabaseIfNotExist=true&useUnicode=yes&characterEncoding=UTF-8&serverTimezone=Asia/Bangkok
+    url: jdbc:postgresql://your-prod-database-host:5432/ihavegpuremake?searchpath=public&createDatabaseIfNotExist=true&useUnicode=yes&characterEncoding=UTF-8&serverTimezone=Asia/Bangkok
     username: your-prod-username
     password: your-prod-password
     hikari:
