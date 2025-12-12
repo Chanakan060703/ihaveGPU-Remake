@@ -1,0 +1,8 @@
+id,type_name,icon_class
+1,CPU,fa-microchip
+2,RAM,fa-memory
+3,Mainboard,fa-server
+4,Graphics Card,fa-desktop
+5,HDD/SSD,fa-hdd
+6,Cooling,fa-fan
+7,Power Supply,fa-plug

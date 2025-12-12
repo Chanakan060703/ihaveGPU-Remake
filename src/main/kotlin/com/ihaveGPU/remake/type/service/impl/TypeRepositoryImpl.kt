@@ -13,7 +13,7 @@ import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
 
 @Service
-class TypeServiceRepositoryImpl: TypeRepositoryCustom {
+class TypeRepositoryImpl: TypeRepositoryCustom {
   @PersistenceContext
   lateinit var entityManager: EntityManager
   lateinit var queryFactory: JPAQueryFactory
@@ -25,7 +25,7 @@ class TypeServiceRepositoryImpl: TypeRepositoryCustom {
 
   private val qType = QType.type
   override fun findGetListTypePage(
-    pageable: Pageable,
+    page: Pageable,
     search: String?,
     isAsc: Boolean
   ): Page<TypeDto> {
@@ -45,8 +45,8 @@ class TypeServiceRepositoryImpl: TypeRepositoryCustom {
       .from(qType)
       .where(criteria)
       .orderBy(orderBy)
-      .offset(pageable.offset)
-      .limit(pageable.pageSize.toLong())
+      .offset(page.offset)
+      .limit(page.pageSize.toLong())
       .fetch().map { it.toServiceLayDto() }
 
     val total = queryFactory
@@ -55,7 +55,7 @@ class TypeServiceRepositoryImpl: TypeRepositoryCustom {
       .where(criteria)
       .fetch().size.toLong()
 
-    return PageImpl(query, pageable, total)
+    return PageImpl(query, page, total)
   }
 
 }

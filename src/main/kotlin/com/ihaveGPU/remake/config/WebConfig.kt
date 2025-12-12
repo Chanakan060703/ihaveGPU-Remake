@@ -1,4 +1,4 @@
-package com.luca.intern.config
+package com.ihaveGPU.remake.config
 
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.servlet.config.annotation.AsyncSupportConfigurer

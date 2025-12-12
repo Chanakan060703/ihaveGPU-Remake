@@ -1,0 +1,25 @@
+product_name,price,detail,product_qty,brand,pic_product,type_id
+Intel Core i9-13900K,18990.00,24-Core 32-Thread Processor 3.0GHz Base 5.8GHz Turbo,50,Intel,https://www.jib.co.th/img_master/product/original/2022092910141755464_2.jpg,1
+AMD Ryzen 9 7950X,21990.00,16-Core 32-Thread Processor 4.5GHz Base 5.7GHz Turbo,45,AMD,https://www.jib.co.th/img_master/product/original/2022092613555155412_2.jpg,1
+Intel Core i7-13700K,14990.00,16-Core 24-Thread Processor 3.4GHz Base 5.4GHz Turbo,60,Intel,https://www.jib.co.th/img_master/product/original/2022092909541955462_2.jpg,1
+AMD Ryzen 7 7700X,12990.00,8-Core 16-Thread Processor 4.5GHz Base 5.4GHz Turbo,55,AMD,https://www.jib.co.th/img_master/product/original/2022092613123755402_2.jpg,1
+Corsair Vengeance RGB 32GB DDR5-6000,5990.00,32GB (2x16GB) DDR5 6000MHz CL36 RGB,80,Corsair,https://www.jib.co.th/img_master/product/original/2023103114215363355_1.jpg,2
+G.Skill Trident Z5 RGB 64GB DDR5-6400,11990.00,64GB (2x32GB) DDR5 6400MHz CL32 RGB,40,G.Skill,https://www.jib.co.th/img_master/product/original/2023122014312664340_1.jpg,2
+Kingston Fury Beast 16GB DDR4-3200,1990.00,16GB (2x8GB) DDR4 3200MHz CL16,100,Kingston,https://ihcupload.s3.ap-southeast-1.amazonaws.com/img/product/product7613_800.jpg,2
+ASUS ROG STRIX Z790-E,15990.00,Intel Z790 ATX Gaming Motherboard WiFi 6E DDR5,35,ASUS,https://www.jib.co.th/img_master/product/original/2022101915255455861_1.jpg,3
+MSI MPG B650 CARBON,9990.00,AMD B650 ATX Gaming Motherboard WiFi 6E DDR5,42,MSI,https://storage-asset.msi.com/global/picture/image/feature/mb/B650/MPG-B650-CARBON-WIFI/mpg-b650-carbon-wifi-norgb.png,3
+Gigabyte Z690 AORUS ELITE,8990.00,Intel Z690 ATX Motherboard DDR5 PCIe 5.0,38,Gigabyte,https://www.jib.co.th/img_master/product/original/2021111514001449829_1.jpg,3
+NVIDIA RTX 4090 24GB,65990.00,GeForce RTX 4090 24GB GDDR6X Ray Tracing,25,NVIDIA,https://www.jib.co.th/img_master/product/original/2023062809562260483_1.jpg,4
+AMD Radeon RX 7900 XTX 24GB,39990.00,Radeon RX 7900 XTX 24GB GDDR6 Ray Tracing,30,AMD,https://www.jib.co.th/img_master/product/original/2023020611000157737_1.jpg,4
+NVIDIA RTX 4080 16GB,49990.00,GeForce RTX 4080 16GB GDDR6X Ray Tracing,35,NVIDIA,https://www.jib.co.th/img_master/product/original/2023062718035160477_1.png,4
+AMD Radeon RX 7800 XT 16GB,24990.00,Radeon RX 7800 XT 16GB GDDR6,40,AMD,https://www.jib.co.th/img_master/product/original/2023093013403762701_1.jpg,4
+Samsung 990 PRO 2TB NVMe,5990.00,2TB NVMe M.2 PCIe 4.0 SSD 7450MB/s Read,70,Samsung,https://www.jib.co.th/img_master/product/original/2023082416295161614_1.jpg,5
+WD Black SN850X 1TB NVMe,3990.00,1TB NVMe M.2 PCIe 4.0 SSD 7300MB/s Read,85,Western Digital,https://www.jib.co.th/img_master/product/original/2022120813231356822_1.jpg,5
+Crucial P5 Plus 500GB NVMe,2490.00,500GB NVMe M.2 PCIe 4.0 SSD 6600MB/s Read,90,Crucial,https://media-cdn.bnn.in.th/291921/Crucial-SSD-P5-Plus-1-square_medium.jpg,5
+Seagate Barracuda 4TB HDD,3290.00,4TB 7200RPM SATA 6Gb/s 256MB Cache,60,Seagate,https://www.jib.co.th/img_master/product/original/2022122016562827695_1.jpg,5
+Noctua NH-D15 chromax.black,3990.00,Dual Tower CPU Cooler 140mm Fans Ultra Quiet,55,Noctua,https://www.jib.co.th/img_master/product/original/20200226120720_35913_287_2.jpg,6
+Corsair iCUE H150i Elite LCD,7990.00,360mm AIO Liquid CPU Cooler LCD Display RGB,45,Corsair,https://www.jib.co.th/img_master/product/original/2021110417045049634_1.jpg,6
+be quiet! Dark Rock Pro 4,3490.00,Dual Tower CPU Cooler Silent Wings 135mm,50,be quiet!,https://www.jib.co.th/img_master/product/original/20231125145018_42066_23_2.jpg,6
+Corsair RM1000x 1000W,6990.00,1000W 80+ Gold Fully Modular ATX PSU,40,Corsair,https://www.jib.co.th/img_master/product/original/20180806091134_21814_24_1.png,7
+Seasonic PRIME TX-850 850W,8990.00,850W 80+ Titanium Fully Modular ATX PSU,35,Seasonic,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYlDxvoeqPaX5vOW5cGQJqrdF1DDZ7lbZ-Yg&s,7
+EVGA SuperNOVA 750 G6 750W,4990.00,750W 80+ Gold Fully Modular ATX PSU,50,EVGA,https://images.evga.com/products/gallery/png/220-G6-0750-X1_LG_1.png,7

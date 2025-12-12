@@ -1,4 +1,4 @@
-package com.luca.intern.common.response
+package com.ihaveGPU.remake.common.response
 
 data class HttpResponse(
   val status: Boolean,

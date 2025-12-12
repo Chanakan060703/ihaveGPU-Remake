@@ -1,0 +1,6 @@
+email,first_name,last_name,password,date_of_birth,image_url
+john.doe@example.com,John,Doe,$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy,1990-05-15,https://i.pravatar.cc/150?img=12
+jane.smith@example.com,Jane,Smith,$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy,1992-08-22,https://i.pravatar.cc/150?img=5
+bob.wilson@example.com,Bob,Wilson,$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy,1988-03-10,https://i.pravatar.cc/150?img=33
+alice.brown@example.com,Alice,Brown,$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy,1995-11-30,https://i.pravatar.cc/150?img=9
+charlie.davis@example.com,Charlie,Davis,$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy,1991-07-18,https://i.pravatar.cc/150?img=15

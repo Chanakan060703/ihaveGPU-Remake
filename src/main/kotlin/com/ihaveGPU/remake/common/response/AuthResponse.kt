@@ -1,4 +1,4 @@
-package com.luca.intern.common.response
+package com.ihaveGPU.remake.common.response
 
 import java.sql.Timestamp
 

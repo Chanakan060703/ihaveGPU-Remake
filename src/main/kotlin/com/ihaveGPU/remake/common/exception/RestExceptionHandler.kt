@@ -1,7 +1,8 @@
-package com.luca.intern.common.exception
+package com.ihaveGPU.remake.common.exception
 
-import com.luca.intern.common.response.ErrorResponseMessage
-import com.luca.intern.common.response.HttpResponse
+
+import com.ihaveGPU.remake.common.response.ErrorResponseMessage
+import com.ihaveGPU.remake.common.response.HttpResponse
 import org.springframework.core.Ordered
 import org.springframework.core.annotation.Order
 import org.springframework.http.HttpStatus

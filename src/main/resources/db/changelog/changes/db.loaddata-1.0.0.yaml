@@ -1,0 +1,248 @@
+databaseChangeLog:
+  - changeSet:
+      id: load-data-table-type
+      author: chanakan.beem
+      changes:
+        - loadData:
+            file: data/type.csv
+            tableName: type
+            separator: ","
+            quotchar: "'"
+            relativeToChangelogFile: true
+            usePreparedStatements: true
+            encoding: UTF-8
+            columns:
+              - column:
+                  header: id
+                  name: id
+                  type: numeric
+              - column:
+                  header: type_name
+                  name: type_name
+                  type: varchar
+              - column:
+                  header: icon_class
+                  name: icon_class
+                  type: varchar
+
+  - changeSet:
+      id: reset-sequence-type
+      author: chanakan.beem
+      changes:
+        - sql:
+            sql: SELECT setval('type_id_seq', (SELECT COALESCE(MAX(id), 0) + 1 FROM type), false)
+
+  - changeSet:
+      id: load-data-table-product
+      author: chanakan.beem
+      changes:
+        - loadData:
+            file: data/product.csv
+            tableName: product
+            separator: ","
+            quotchar: "'"
+            relativeToChangelogFile: true
+            usePreparedStatements: true
+            encoding: UTF-8
+            columns:
+              - column:
+                  header: product_name
+                  name: product_name
+                  type: varchar
+              - column:
+                  header: price
+                  name: price
+                  type: numeric
+              - column:
+                  header: detail
+                  name: detail
+                  type: varchar
+              - column:
+                  header: product_qty
+                  name: product_qty
+                  type: numeric
+              - column:
+                  header: brand
+                  name: brand
+                  type: varchar
+              - column:
+                  header: pic_product
+                  name: pic_product
+                  type: varchar
+              - column:
+                  header: type_id
+                  name: type_id
+                  type: numeric
+  - changeSet:
+      id: load-data-table-cart_item
+      author: chanakan.beem
+      changes:
+        - loadData:
+            file: data/cartItem.csv
+            tableName: cart_item
+            separator: ","
+            quotchar: "'"
+            relativeToChangelogFile: true
+            usePreparedStatements: true
+            encoding: UTF-8
+            columns:
+              - column:
+                  header: quantity
+                  name: quantity
+                  type: numeric
+              - column:
+                  header: product_id
+                  name: product_id
+                  type: numeric
+  - changeSet:
+      id: load-data-table-user
+      author: chanakan.beem
+      changes:
+        - loadData:
+            file: data/user.csv
+            tableName: user
+            separator: ","
+            quotchar: "'"
+            relativeToChangelogFile: true
+            usePreparedStatements: true
+            encoding: UTF-8
+            columns:
+              - column:
+                  header: email
+                  name: email
+                  type: varchar
+              - column:
+                  header: first_name
+                  name: first_name
+                  type: varchar
+              - column:
+                  header: last_name
+                  name: last_name
+                  type: varchar
+              - column:
+                  header: password
+                  name: password
+                  type: varchar
+              - column:
+                  header: date_of_birth
+                  name: date_of_birth
+                  type: date
+              - column:
+                  header: image_url
+                  name: image_url
+                  type: varchar
+  - changeSet:
+      id: load-data-table-address
+      author: chanakan.beem
+      changes:
+        - loadData:
+            file: data/address.csv
+            tableName: address
+            separator: ","
+            quotchar: "'"
+            relativeToChangelogFile: true
+            usePreparedStatements: true
+            encoding: UTF-8
+            columns:
+              - column:
+                  header: house_number
+                  name: house_number
+                  type: varchar
+              - column:
+                  header: province
+                  name: province
+                  type: varchar
+              - column:
+                  header: building
+                  name: building
+                  type: varchar
+              - column:
+                  header: district
+                  name: district
+                  type: varchar
+              - column:
+                  header: sub_district
+                  name: sub_district
+                  type: varchar
+
+  - changeSet:
+      id: load-data-table-receipt
+      author: chanakan.beem
+      changes:
+        - loadData:
+            file: data/receipt.csv
+            tableName: receipt
+            separator: ","
+            quotchar: "'"
+            relativeToChangelogFile: true
+            usePreparedStatements: true
+            encoding: UTF-8
+            columns:
+              - column:
+                  header: date
+                  name: date
+                  type: datetime
+              - column:
+                  header: total
+                  name: total
+                  type: numeric
+              - column:
+                  header: email
+                  name: email
+                  type: varchar
+              - column:
+                  header: address_id
+                  name: address_id
+                  type: numeric
+
+  - changeSet:
+      id: load-data-table-receipt_detail
+      author: chanakan.beem
+      changes:
+        - loadData:
+            file: data/receiptDetail.csv
+            tableName: receipt_detail
+            separator: ","
+            quotchar: "'"
+            relativeToChangelogFile: true
+            usePreparedStatements: true
+            encoding: UTF-8
+            columns:
+              - column:
+                  header: amount
+                  name: amount
+                  type: numeric
+              - column:
+                  header: total_detail
+                  name: total_detail
+                  type: numeric
+              - column:
+                  header: cart_item_id
+                  name: cart_item_id
+                  type: numeric
+              - column:
+                  header: receipt_id
+                  name: receipt_id
+                  type: numeric
+
+  - changeSet:
+      id: load-data-table-saved_spec_group
+      author: chanakan.beem
+      changes:
+        - loadData:
+            file: data/savedSpecGroup.csv
+            tableName: saved_spec_group
+            separator: ","
+            quotchar: "'"
+            relativeToChangelogFile: true
+            usePreparedStatements: true
+            encoding: UTF-8
+            columns:
+              - column:
+                  header: user_email
+                  name: user_email
+                  type: varchar
+              - column:
+                  header: receipt_detail_id
+                  name: receipt_detail_id
+                  type: numeric

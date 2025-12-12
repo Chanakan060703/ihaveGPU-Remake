@@ -1,4 +1,4 @@
-package com.ihaveGPU.type.dto
+package com.ihaveGPU.remake.type.dto
 
 data class TypeDto(
   val id: Long = 0,
