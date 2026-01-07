@@ -40,7 +40,7 @@ databaseChangeLog:
               - column:
                   name: is_deleted
                   type: boolean
-                  defaultValue: false
+                  defaultValueBoolean: false
                   constraints:
                     nullable: false
               - column:
@@ -83,7 +83,7 @@ databaseChangeLog:
               - column:
                   name: is_deleted
                   type: boolean
-                  defaultValue: false
+                  defaultValueBoolean: false
                   constraints:
                     nullable: false
               - column:
@@ -153,7 +153,7 @@ databaseChangeLog:
               - column:
                   name: is_deleted
                   type: boolean
-                  defaultValue: false
+                  defaultValueBoolean: false
                   constraints:
                     nullable: false
               - column:
@@ -198,7 +198,7 @@ databaseChangeLog:
               - column:
                   name: is_deleted
                   type: boolean
-                  defaultValue: false
+                  defaultValueBoolean: false
                   constraints:
                     nullable: false
               - column:
@@ -256,7 +256,7 @@ databaseChangeLog:
               - column:
                   name: is_deleted
                   type: boolean
-                  defaultValue: false
+                  defaultValueBoolean: false
                   constraints:
                     nullable: false
               - column:
@@ -311,7 +311,7 @@ databaseChangeLog:
               - column:
                   name: is_deleted
                   type: boolean
-                  defaultValue: false
+                  defaultValueBoolean: false
                   constraints:
                     nullable: false
               - column:
@@ -368,7 +368,7 @@ databaseChangeLog:
               - column:
                   name: is_deleted
                   type: boolean
-                  defaultValue: false
+                  defaultValueBoolean: false
                   constraints:
                     nullable: false
               - column:
@@ -415,7 +415,7 @@ databaseChangeLog:
               - column:
                   name: is_deleted
                   type: boolean
-                  defaultValue: false
+                  defaultValueBoolean: false
                   constraints:
                     nullable: false
               - column:
