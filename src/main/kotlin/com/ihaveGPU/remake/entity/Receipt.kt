@@ -1,6 +1,7 @@
 package com.ihaveGPU.remake.entity
 
 import com.fasterxml.jackson.annotation.JsonFormat
+import com.ihaveGPU.remake.receipt.dto.ReceiptDto
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.FetchType
@@ -19,29 +20,29 @@ import java.util.Date
 data class Receipt(
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  val id: Long,
+  val id: Long = 0,
 
   @Column(name = "date")
-  val date: String,
+  var date: String,
 
   @Column(name = "total")
-  val total: Double,
+  var total: Double,
 
   @Column(name = "email")
-  val email: String,
+  var email: String,
 
   @Column(name = "address_id")
-  val addressId: Long,
+  var addressId: Long,
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "address_id", insertable = false, updatable = false)
-  val address: Address,
+  val address: Address? = null,
 
   @OneToMany(mappedBy = "receipt")
   val receiptDetails: MutableList<ReceiptDetail> = mutableListOf(),
 
   @Column(name = "is_deleted")
-  val isDeleted: Boolean = false,
+  var isDeleted: Boolean = false,
 
   @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
   @CreationTimestamp
@@ -50,5 +51,14 @@ data class Receipt(
   @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
   @CreationTimestamp
   val updatedDate: Date = Date()
-
-)
+) {
+  fun toReceiptDto(): ReceiptDto {
+    return ReceiptDto(
+      id = id,
+      date = date,
+      total = total,
+      email = email,
+      addressId = addressId
+    )
+  }
+}

@@ -1,6 +1,7 @@
 package com.ihaveGPU.remake.entity
 
 import com.fasterxml.jackson.annotation.JsonFormat
+import com.ihaveGPU.remake.address.dto.AddressDto
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
@@ -15,25 +16,25 @@ import java.util.Date
 data class Address(
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  val id: Long,
+  val id: Long = 0,
 
   @Column(name = "house_number")
-  val houseNumber: String,
+  var houseNumber: String,
 
   @Column(name = "province")
-  val province: String,
+  var province: String,
 
   @Column(name = "building")
-  val building: String,
+  var building: String,
 
   @Column(name = "district")
-  val district: String,
+  var district: String,
 
   @Column(name = "sub_district")
-  val subDistrict: String,
+  var subDistrict: String,
 
   @Column(name = "is_deleted")
-  val isDeleted: Boolean = false,
+  var isDeleted: Boolean = false,
 
   @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
   @CreationTimestamp
@@ -42,6 +43,15 @@ data class Address(
   @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
   @CreationTimestamp
   val updatedDate: Date = Date()
-){
-
+) {
+  fun toAddressDto(): AddressDto {
+    return AddressDto(
+      id = id,
+      houseNumber = houseNumber,
+      province = province,
+      building = building,
+      district = district,
+      subDistrict = subDistrict
+    )
+  }
 }

@@ -1,8 +1,11 @@
 package com.ihaveGPU.remake.entity
 
 import com.fasterxml.jackson.annotation.JsonFormat
+import com.ihaveGPU.remake.user.dto.UserDto
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
+import jakarta.persistence.EnumType
+import jakarta.persistence.Enumerated
 import jakarta.persistence.Id
 import jakarta.persistence.OneToMany
 import jakarta.persistence.Table
@@ -14,23 +17,32 @@ import java.util.Date
 data class User(
   @Id
   @Column(name = "email")
-    val email: String,
+  val email: String,
+
   @Column(name = "first_name")
-    val firstName: String,
+  var firstName: String,
+
   @Column(name = "last_name")
-    val lastName: String,
+  var lastName: String,
+
   @Column(name = "password")
-    val password: String,
+  var password: String,
+
   @Column(name = "date_of_birth")
-    val dateOfBirth: String,
+  var dateOfBirth: String,
+
   @Column(name = "image_url")
-    val imageUrl: String? = null,
+  var imageUrl: String? = null,
+
+  @Enumerated(EnumType.STRING)
+  @Column(name = "role")
+  var role: UserRole = UserRole.USER,
 
   @OneToMany(mappedBy = "user")
   val savedSpecGroups: MutableList<SavedSpecGroup> = mutableListOf(),
 
   @Column(name = "is_deleted")
-  val isDeleted: Boolean = false,
+  var isDeleted: Boolean = false,
 
   @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
   @CreationTimestamp
@@ -39,4 +51,15 @@ data class User(
   @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
   @CreationTimestamp
   val updatedDate: Date = Date()
-)
+) {
+  fun toUserDto(): UserDto {
+    return UserDto(
+      email = email,
+      firstName = firstName,
+      lastName = lastName,
+      dateOfBirth = dateOfBirth,
+      imageUrl = imageUrl,
+      role = role
+    )
+  }
+}

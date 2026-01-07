@@ -1,6 +1,7 @@
 package com.ihaveGPU.remake.entity
 
 import com.fasterxml.jackson.annotation.JsonFormat
+import com.ihaveGPU.remake.cartItem.dto.CartItemDto
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.FetchType
@@ -21,17 +22,17 @@ data class CartItem(
   val id: Long = 0,
 
   @Column(name = "quantity")
-  val quantity: Int,
+  var quantity: Int,
 
   @Column(name = "product_id")
-  val productId: Long,
+  var productId: Long,
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "product_id", insertable = false, updatable = false)
-  val product: product,
+  val product: product? = null,
 
   @Column(name = "is_deleted")
-  val isDeleted: Boolean = false,
+  var isDeleted: Boolean = false,
 
   @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
   @CreationTimestamp
@@ -40,4 +41,12 @@ data class CartItem(
   @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
   @CreationTimestamp
   val updatedDate: Date = Date()
-)
+) {
+  fun toCartItemDto(): CartItemDto {
+    return CartItemDto(
+      id = id,
+      quantity = quantity,
+      productId = productId
+    )
+  }
+}
