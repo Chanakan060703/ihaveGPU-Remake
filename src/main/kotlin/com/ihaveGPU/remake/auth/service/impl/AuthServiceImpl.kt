@@ -21,16 +21,13 @@ class AuthServiceImpl @Autowired constructor(
 ): AuthService {
 
   override fun login(request: LoginRequest): LoginResponse {
-    // Find user by email
     val user = userRepository.findByEmailAndIsDeletedFalse(request.email)
       ?: throw NotFoundException("User not found or invalid credentials")
 
-    // Verify password
     if (!PasswordUtil.verifyPassword(request.password, user.password)) {
       throw BadRequestException("Invalid credentials")
     }
 
-    // Generate JWT token
     val token = jwtUtil.generateToken(user.email, user.role)
 
     return LoginResponse(
@@ -43,16 +40,13 @@ class AuthServiceImpl @Autowired constructor(
   }
 
   override fun register(request: RegisterRequest): LoginResponse {
-    // Check if user already exists
     val existingUser = userRepository.findByEmailAndIsDeletedFalse(request.email)
     if (existingUser != null) {
       throw BadRequestException("User with email ${request.email} already exists")
     }
 
-    // Hash password
     val hashedPassword = PasswordUtil.hashPassword(request.password)
 
-    // Create new user (default role is USER)
     val newUser = User(
       email = request.email,
       firstName = request.firstName,
@@ -65,7 +59,6 @@ class AuthServiceImpl @Autowired constructor(
 
     userRepository.save(newUser)
 
-    // Generate JWT token
     val token = jwtUtil.generateToken(newUser.email, newUser.role)
 
     return LoginResponse(
