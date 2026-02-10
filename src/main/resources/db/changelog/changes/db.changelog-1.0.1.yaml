@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-role-column-to-user
+      author: system
+      changes:
+        - addColumn:
+            tableName: user
+            columns:
+              - column:
+                  name: role
+                  type: varchar(50)
+                  defaultValue: 'USER'
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: update-existing-users-role
+      author: system
+      changes:
+        - sql:
+            sql: UPDATE "user" SET role = 'USER' WHERE role IS NULL
+
+  - changeSet:
+      id: set-admin-user
+      author: system
+      changes:
+        - sql:
+            sql: UPDATE "user" SET role = 'ADMIN' WHERE email = 'john.doe@example.com'
+
