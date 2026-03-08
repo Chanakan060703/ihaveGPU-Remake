@@ -40,8 +40,7 @@ class AuthServiceImpl @Autowired constructor(
   }
 
   override fun register(request: RegisterRequest): LoginResponse {
-    val existingUser = userRepository.findByEmailAndIsDeletedFalse(request.email)
-    if (existingUser != null) {
+    if (userRepository.findById(request.email).isPresent) {
       throw BadRequestException("User with email ${request.email} already exists")
     }
 
@@ -52,7 +51,7 @@ class AuthServiceImpl @Autowired constructor(
       firstName = request.firstName,
       lastName = request.lastName,
       password = hashedPassword,
-      dateOfBirth = request.dateOfBirth,
+      dateOfBirth = request.dateOfBirth!!,
       imageUrl = request.imageUrl,
       role = UserRole.USER
     )

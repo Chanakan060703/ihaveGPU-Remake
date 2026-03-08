@@ -8,6 +8,8 @@ import com.ihaveGPU.remake.product.request.UpdateProductRequest
 import com.ihaveGPU.remake.product.service.ProductService
 import jakarta.validation.Valid
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.domain.PageRequest
+import org.springframework.data.domain.Pageable
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.DeleteMapping
@@ -17,12 +19,13 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/api/products")
 class ProductController @Autowired constructor(
-  private val productService: ProductService
+  private val productService: ProductService,
 ){
   private val logger = org.slf4j.LoggerFactory.getLogger(ProductController::class.java)
 
@@ -168,6 +171,47 @@ class ProductController @Autowired constructor(
           HttpResponse(
             false,
             e.message ?: "ลบ product เกิดข้อพลาด"
+          )
+        )
+    }
+  }
+
+  @GetMapping("/page")
+  fun getListProductPage(
+    @RequestParam("page", defaultValue = "0") page: Int,
+    @RequestParam("size", defaultValue = "20") size: Int,
+    @RequestParam("search", required = false) search: String?,
+    @RequestParam("isAsc", defaultValue = "true") isAsc: Boolean
+  ): ResponseEntity<Any> {
+    val pageable: Pageable = PageRequest.of(page, size)
+    return try {
+      ResponseEntity.ok(
+        HttpResponse(
+          true,
+          "ดึงรายการ Product สำเร็จ ",
+          productService.getListProductPage(
+            pageable,
+            search,
+            isAsc
+          )
+          )
+        )
+    } catch (e: NotFoundException) {
+      logger.error(e.message)
+      ResponseEntity.status(HttpStatus.NOT_FOUND)
+        .body(
+          HttpResponse(
+            false,
+            e.message ?: "ไม่พบข้อมูล Product"
+          )
+        )
+    } catch (e: Exception) {
+      logger.error(e.message)
+      ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+        .body(
+          HttpResponse(
+            false,
+            e.message ?: "ข้อมูล Product เกิดข้อพลาด"
           )
         )
     }

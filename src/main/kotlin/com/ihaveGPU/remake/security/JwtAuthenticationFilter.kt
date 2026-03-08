@@ -27,7 +27,7 @@ class JwtAuthenticationFilter @Autowired constructor(
       val authHeader = request.getHeader("Authorization")
 
       if (authHeader != null && authHeader.startsWith("Bearer ")) {
-        val token = authHeader.substring(7)
+        val token = authHeader.substring(7).trim()
         val email = jwtUtil.extractEmail(token)
 
         if (email != null && SecurityContextHolder.getContext().authentication == null) {

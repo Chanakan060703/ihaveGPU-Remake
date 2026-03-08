@@ -10,6 +10,7 @@ import jakarta.persistence.Id
 import jakarta.persistence.OneToMany
 import jakarta.persistence.Table
 import org.hibernate.annotations.CreationTimestamp
+import java.time.LocalDate
 import java.util.Date
 
 @Entity
@@ -29,7 +30,7 @@ data class User(
   var password: String,
 
   @Column(name = "date_of_birth")
-  var dateOfBirth: String,
+  var dateOfBirth: LocalDate,
 
   @Column(name = "image_url")
   var imageUrl: String? = null,
@@ -57,7 +58,7 @@ data class User(
       email = email,
       firstName = firstName,
       lastName = lastName,
-      dateOfBirth = dateOfBirth,
+      dateOfBirth = dateOfBirth.toString(),
       imageUrl = imageUrl,
       role = role
     )

@@ -9,6 +9,8 @@ import com.ihaveGPU.remake.product.request.UpdateProductRequest
 import com.ihaveGPU.remake.product.service.ProductService
 import com.ihaveGPU.remake.type.repository.TypeRepository
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
 
 @Service
@@ -65,6 +67,18 @@ class ProductServiceImpl  @Autowired constructor(
     productRepository.save(product)
 
     return true
+  }
+
+  override fun getListProductPage(
+    pageable: Pageable,
+    search: String?,
+    isAsc: Boolean
+  ): Page<ProductDto> {
+    return productRepository.findGetListProductPage(
+      pageable,
+      search,
+      isAsc
+    )
   }
 
 }

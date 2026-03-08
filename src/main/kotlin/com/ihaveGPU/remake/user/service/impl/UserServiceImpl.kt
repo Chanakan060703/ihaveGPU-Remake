@@ -27,9 +27,8 @@ class UserServiceImpl @Autowired constructor(
   }
 
   override fun createUser(request: CreateUserRequest): UserDto {
-    // Check if user already exists
-    val existingUser = userRepository.findByEmailAndIsDeletedFalse(request.email)
-    if (existingUser != null) {
+    // Check if user already exists (including soft-deleted users)
+    if (userRepository.findById(request.email).isPresent) {
       throw BadRequestException("User with email ${request.email} already exists")
     }
 
@@ -39,7 +38,7 @@ class UserServiceImpl @Autowired constructor(
       firstName = request.firstName,
       lastName = request.lastName,
       password = hashedPassword,
-      dateOfBirth = request.dateOfBirth,
+      dateOfBirth = request.dateOfBirth!!,
       imageUrl = request.imageUrl
     )
     userRepository.save(user)
@@ -52,7 +51,7 @@ class UserServiceImpl @Autowired constructor(
 
     user.firstName = request.firstName
     user.lastName = request.lastName
-    user.dateOfBirth = request.dateOfBirth
+    user.dateOfBirth = request.dateOfBirth!!
     user.imageUrl = request.imageUrl
     userRepository.save(user)
     return user.toUserDto()

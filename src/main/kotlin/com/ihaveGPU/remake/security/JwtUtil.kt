@@ -29,6 +29,7 @@ class JwtUtil @Autowired constructor(
       .expiration(expiryDate)
       .signWith(secretKey)
       .compact()
+      .trim()
   }
 
   fun extractEmail(token: String): String? {
